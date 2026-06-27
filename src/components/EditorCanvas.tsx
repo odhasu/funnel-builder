@@ -8,9 +8,10 @@ interface Props {
   site: FunnelSite;
   selectedSectionId: string | null;
   onSelectSection: (id: string) => void;
+  currentPageId: string;
 }
 
-export const EditorCanvas = forwardRef<any, Props>(function EditorCanvas({ template, site, selectedSectionId, onSelectSection }, ref) {
+export const EditorCanvas = forwardRef<any, Props>(function EditorCanvas({ template, site, selectedSectionId, onSelectSection, currentPageId }, ref) {
   const containerRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<GjsEditor | null>(null);
 
@@ -34,8 +35,8 @@ export const EditorCanvas = forwardRef<any, Props>(function EditorCanvas({ templ
 
   useEffect(() => {
     if (!editorRef.current || !ready) return;
-    loadTemplateIntoCanvas(editorRef.current, template, site, 'home');
-  }, [template.id, ready]);
+    loadTemplateIntoCanvas(editorRef.current, template, site, currentPageId);
+  }, [template.id, currentPageId, ready]);
 
   // Highlight selected section
   useEffect(() => {

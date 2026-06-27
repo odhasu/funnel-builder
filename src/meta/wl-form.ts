@@ -13,5 +13,7 @@ export const wlFormMeta: SectionMeta = {
     { id: 'bgColor', label: 'Background Color', type: 'color', default: '#000000' },
     { id: 'accentColor', label: 'Accent Color', type: 'color', default: '#39ff14' },
     { id: 'cardBorder', label: 'Card Border', type: 'text', default: 'rgba(57, 255, 20, 0.3)' },
+    { id: 'gradientFrom', label: 'Gradient From', type: 'color', default: '#ffffff' },
+    { id: 'gradientTo', label: 'Gradient To', type: 'color', default: '#969696' },
   ],
 };

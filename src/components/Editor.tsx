@@ -86,6 +86,7 @@ export function Editor({ siteId, onBack }: Props) {
           site={site}
           selectedSectionId={selectedSectionId}
           onSelectSection={handleSectionClick}
+          currentPageId={currentPageId}
         />
         {selectedSection && (
           <SettingsPanel

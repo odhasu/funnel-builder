@@ -6,8 +6,10 @@ export const thankYouMeta: SectionMeta = {
   category: 'Page',
   icon: '✅',
   settings: [
-    { id: 'headline', label: 'Headline', type: 'text', default: 'Thank You!' },
-    { id: 'subheadline', label: 'Subheadline', type: 'textarea', default: '' },
+    { id: 'headline', label: 'Headline', type: 'text', default: "You're on the Waitlist!" },
+    { id: 'subheadline', label: 'Subheadline', type: 'textarea', default: "You Just Applied to the Waitlist. Check your email for confirmation." },
     { id: 'bgColor', label: 'Background Color', type: 'color', default: '#000000' },
+    { id: 'gradientFrom', label: 'Gradient From', type: 'color', default: '#ffffff' },
+    { id: 'gradientTo', label: 'Gradient To', type: 'color', default: '#919191' },
   ],
 };

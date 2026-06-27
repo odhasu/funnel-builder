@@ -54,9 +54,11 @@ export const waitlistBasicTemplate: Template = {
       slug: '/thank-you',
       sections: [
         { id: 'sec-thanks', component: 'thank-you', defaultAttributes: {
-          headline: "You're on the list!",
-          subheadline: 'Check your email for confirmation. We will notify you when we launch.',
-          bgColor: '#000000'
+          headline: "You're on the Waitlist!",
+          subheadline: "You Just Applied to the Waitlist. Check your email for confirmation. We'll notify you when spots open up.",
+          bgColor: '#000000',
+          gradientFrom: '#ffffff',
+          gradientTo: '#919191'
         }}
       ]
     }
