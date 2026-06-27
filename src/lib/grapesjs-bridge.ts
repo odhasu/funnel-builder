@@ -164,6 +164,10 @@ export function loadTemplateIntoCanvas(
   page.sections.forEach(section => {
     const overrides = site.overrides[section.id] || {};
     const attrs = { ...section.defaultAttributes, ...overrides };
-    wrapper.append(`<div data-section-id="${section.id}" data-gjs-type="${section.component}"></div>`);
+    const comps = wrapper.append(`<div data-section-id="${section.id}" data-gjs-type="${section.component}"></div>`);
+    const comp = comps instanceof Array ? comps[0] : comps;
+    if (comp && comp.setAttributes) {
+      comp.setAttributes(attrs);
+    }
   });
 }

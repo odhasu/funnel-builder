@@ -31,7 +31,7 @@ export function EditorCanvas({ template, site, selectedSectionId, onSelectSectio
   useEffect(() => {
     if (!editorRef.current || !ready) return;
     loadTemplateIntoCanvas(editorRef.current, template, site, 'home');
-  }, [template.id, template, site, ready]);
+  }, [template.id, ready]);
 
   // Highlight selected section
   useEffect(() => {
