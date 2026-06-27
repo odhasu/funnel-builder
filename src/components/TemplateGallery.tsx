@@ -5,7 +5,7 @@ import { createSite } from '../services/storage';
 import { TemplateCard } from './TemplateCard';
 
 interface Props {
-  onSelect: (type: FunnelType, templateId: string) => void;
+  onSelect: (siteId: string) => void;
   onClose: () => void;
 }
 
@@ -43,8 +43,8 @@ export function TemplateGallery({ onSelect, onClose }: Props) {
               key={t.id}
               template={t}
               onSelect={() => {
-                const site = createSite(`${t.name} - ${Date.now()}`, t.type, t.id);
-                onSelect(site.type, t.id);
+                const site = createSite(`${t.name}`, t.type, t.id);
+                onSelect(site.id);
               }}
             />
           ))}

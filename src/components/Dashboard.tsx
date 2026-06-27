@@ -63,9 +63,9 @@ export function Dashboard({ onSelect }: Props) {
 
       {showGallery && (
         <TemplateGallery
-          onSelect={(type, templateId) => {
+          onSelect={(siteId) => {
             setShowGallery(false);
-            onSelect(`new-${type}-${templateId}`);
+            onSelect(siteId);
           }}
           onClose={() => setShowGallery(false)}
         />
