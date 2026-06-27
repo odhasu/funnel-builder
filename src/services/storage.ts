@@ -11,8 +11,14 @@ export function loadSites(): FunnelSite[] {
   }
 }
 
-export function saveSites(sites: FunnelSite[]): void {
-  localStorage.setItem(SITES_KEY, JSON.stringify(sites));
+export function saveSites(sites: FunnelSite[]): boolean {
+  try {
+    localStorage.setItem(SITES_KEY, JSON.stringify(sites));
+    return true;
+  } catch (e) {
+    console.error('Failed to save sites:', e);
+    return false;
+  }
 }
 
 export function createSite(name: string, type: FunnelSite['type'], templateId: string): FunnelSite {
