@@ -156,6 +156,7 @@ export async function exportAsNextJSProject(site: FunnelSite, template: Template
       next: '^14.2.0',
       react: '^18.3.0',
       'react-dom': '^18.3.0',
+      'react-bits': '^0.1.0',
     },
     devDependencies: {
       '@types/node': '^20.0.0',
@@ -221,6 +222,44 @@ module.exports = nextConfig;
   // next-env.d.ts
   zip.file('next-env.d.ts', `/// <reference types="next" />
 /// <reference types="next/image-types/global" />
+`);
+
+  // React Bits background wrapper for exported project
+  zip.file('lib/react-bits-backgrounds.tsx', `// React Bits background wrapper — maps background IDs to components.
+// Install "react-bits" and import the actual components for full effects.
+// For the MVP, backgrounds are rendered as gradient placeholders.
+
+import React from 'react';
+
+type BackgroundChild = { children: React.ReactNode };
+
+const backgrounds: Record<string, React.FC<BackgroundChild>> = {
+  'liquid-ether': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #a78bfa, #f472b6, #60a5fa)' }}>{children}</div>
+  ),
+  'dither': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #4b5563, #111827)' }}>{children}</div>
+  ),
+  'prism': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #93c5fd, #86efac, #c4b5fd)' }}>{children}</div>
+  ),
+  'dark-veil': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #111827, #000000)' }}>{children}</div>
+  ),
+  'grid-scan': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #06b6d4, #1e40af)' }}>{children}</div>
+  ),
+  'light-pillar': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #fde68a, #facc15, #ea580c)' }}>{children}</div>
+  ),
+  'pixel-snow': ({ children }) => (
+    <div style={{ background: 'linear-gradient(135deg, #7dd3fc, #4f46e5)' }}>{children}</div>
+  ),
+};
+
+export function getBackgroundComponent(id: string): React.FC<BackgroundChild> | null {
+  return backgrounds[id] || null;
+}
 `);
 
   // .gitignore
