@@ -79,4 +79,4 @@ export const EditorCanvas = forwardRef<any, Props>(function EditorCanvas({ templ
       </div>
     </div>
   );
-}
+})
