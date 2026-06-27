@@ -33,13 +33,13 @@ export function createSite(name: string, type: FunnelSite['type'], templateId: s
 }
 
 export function saveSite(site: FunnelSite): void {
-  site.updatedAt = Date.now();
+  const updated = { ...site, updatedAt: Date.now() };
   const sites = loadSites();
   const idx = sites.findIndex(s => s.id === site.id);
   if (idx >= 0) {
-    sites[idx] = site;
+    sites[idx] = updated;
   } else {
-    sites.push(site);
+    sites.push(updated);
   }
   saveSites(sites);
 }
