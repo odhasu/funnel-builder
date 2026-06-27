@@ -16,10 +16,10 @@ function registerFunnelComponents(editor: GjsEditor) {
     },
     'wl-hero': {
       html: (attrs) => `
-        <div style="min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;background:${attrs.bgColor || '#0f172a'};text-align:center;">
+        <div style="min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;background:${attrs.bgColor || '#000000'};text-align:center;">
           <div style="max-width:560px;width:100%;position:relative;z-index:1;">
-            <h1 style="font-size:2.5rem;font-weight:800;color:#fff;margin:0 0 1rem;">${attrs.headline || ''}</h1>
-            <p style="font-size:1.125rem;color:#94a3b8;margin:0;">${attrs.subheadline || ''}</p>
+            <h1 style="font-size:2.5rem;font-weight:800;color:${attrs.textColor || '#ffffff'};margin:0 0 1rem;">${attrs.headline || ''}</h1>
+            <p style="font-size:1.125rem;color:${attrs.mutedColor || '#d4d4d4'};margin:0;">${attrs.subheadline || ''}</p>
           </div>
         </div>`
     },
@@ -50,12 +50,12 @@ function registerFunnelComponents(editor: GjsEditor) {
     },
     'wl-form': {
       html: (attrs) => `
-        <div style="padding:4rem 2rem;background:${attrs.bgColor || '#fff'};">
+        <div style="padding:4rem 2rem;background:${attrs.bgColor || '#000000'};">
           <div style="max-width:400px;margin:0 auto;text-align:center;">
-            <h2 style="font-size:1.5rem;font-weight:700;color:#111827;margin:0 0 1.5rem;">${attrs.headline || ''}</h2>
+            <h2 style="font-size:1.5rem;font-weight:700;color:#fff;margin:0 0 1.5rem;">${attrs.headline || ''}</h2>
             <form style="display:flex;flex-direction:column;gap:0.75rem;">
-              <input type="email" placeholder="${attrs.emailPlaceholder || 'Enter your email'}" style="width:100%;padding:0.75rem;border:1px solid #d1d5db;border-radius:0.5rem;font-size:1rem;text-align:center;" />
-              <button type="submit" style="background:#3b82f6;color:white;padding:1rem;border:none;border-radius:0.5rem;font-weight:600;font-size:1rem;cursor:pointer;">${attrs.buttonText || 'Join Waitlist'}</button>
+              <input type="email" placeholder="${attrs.emailPlaceholder || 'Enter your email'}" style="width:100%;padding:0.75rem;border:2px solid ${attrs.cardBorder || 'rgba(57, 255, 20, 0.3)'};border-radius:0.5rem;font-size:1rem;text-align:center;background:rgba(255,255,255,0.04);color:#fff;" />
+              <button type="submit" style="background:${attrs.accentColor || '#39ff14'};color:#000;padding:1rem;border:none;border-radius:0.5rem;font-weight:600;font-size:1rem;cursor:pointer;">${attrs.buttonText || 'Join Waitlist'}</button>
             </form>
             ${attrs.incentiveText ? `<p style="font-size:0.8rem;color:#6b7280;margin-top:1rem;">${attrs.incentiveText}</p>` : ''}
           </div>
@@ -76,13 +76,51 @@ function registerFunnelComponents(editor: GjsEditor) {
     },
     'thank-you': {
       html: (attrs) => `
-        <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:${attrs.bgColor || '#0f172a'};text-align:center;">
+        <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:${attrs.bgColor || '#000000'};text-align:center;">
           <div style="max-width:560px;">
             <div style="font-size:4rem;margin-bottom:1rem;">&#10004;&#65039;</div>
             <h1 style="font-size:2.5rem;font-weight:800;color:#fff;margin:0 0 1rem;">${attrs.headline || ''}</h1>
             <p style="font-size:1.125rem;color:#94a3b8;margin:0;">${attrs.subheadline || ''}</p>
           </div>
         </div>`
+    },
+    'testimonials': {
+      html: (attrs) => `
+        <div style="padding:2.375rem 1rem;background:${attrs.bgColor || '#000000'};text-align:center;">
+          <h2 style="font-size:2.986rem;font-weight:700;color:${attrs.textColor || '#ffffff'};margin:0 0 3rem;">${attrs.headline || ''}</h2>
+          <div style="max-width:75%;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;">
+            <div style="aspect-ratio:16/9;border-radius:0.75rem;overflow:hidden;background:#1a1a1a;"></div>
+            <div style="aspect-ratio:16/9;border-radius:0.75rem;overflow:hidden;background:#1a1a1a;"></div>
+            <div style="aspect-ratio:16/9;border-radius:0.75rem;overflow:hidden;background:#1a1a1a;"></div>
+            <div style="aspect-ratio:16/9;border-radius:0.75rem;overflow:hidden;background:#1a1a1a;"></div>
+          </div>
+        </div>`
+    },
+    'wins-section': {
+      html: (attrs) => `
+        <div style="padding:2.375rem 1rem;background:${attrs.bgColor || '#000000'};text-align:center;">
+          <h2 style="font-size:2.863rem;font-weight:700;color:${attrs.textColor || '#ffffff'};margin:0 0 2.5rem;">${attrs.headline || ''}</h2>
+          <div style="max-width:75%;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.75rem;">
+            <div style="aspect-ratio:1/1;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"></div>
+            <div style="aspect-ratio:1/1;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"></div>
+            <div style="aspect-ratio:1/1;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"></div>
+            <div style="aspect-ratio:1/1;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"></div>
+            <div style="aspect-ratio:1/1;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"></div>
+            <div style="aspect-ratio:1/1;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"></div>
+          </div>
+        </div>`
+    },
+    'cta-section': {
+      html: (attrs) => `
+        <div style="padding:2rem 1rem;background:${attrs.bgColor || '#000000'};text-align:center;">
+          <button style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer;background:${attrs.buttonColor || '#39ff14'};color:#000;font-weight:600;font-size:0.875rem;border-radius:14.4px;padding:14.08px 18.4px;border:none;box-shadow:0 18px 40px -15px rgba(57,255,20,0.85);transition:all 0.2s;">${attrs.buttonText || 'Get Started Now'}</button>
+        </div>`
+    },
+    'wl-footer': {
+      html: (attrs) => `
+        <footer style="width:100%;display:flex;justify-content:center;padding:2.25rem 1rem;background:${attrs.bgColor || '#000000'};">
+          <a href="${attrs.link || 'https://clyro.io/'}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:0 10.8px;font-size:0.875rem;color:#919191;text-decoration:none;">${attrs.text || 'Built using clyro'}</a>
+        </footer>`
     },
   };
 
@@ -123,6 +161,10 @@ export function getComponentHtml(
     'vsl-hero': (a) => `<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:${a.bgColor};text-align:center;"><h1 style="font-size:3rem;font-weight:800;color:#fff;">${a.headline}</h1></div>`,
     'wl-hero': (a) => `<div style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:${a.bgColor};text-align:center;"><h1 style="font-size:2.5rem;font-weight:800;color:#fff;">${a.headline}</h1></div>`,
     'thank-you': (a) => `<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:${a.bgColor};text-align:center;"><h1 style="font-size:2.5rem;font-weight:800;color:#fff;">${a.headline}</h1></div>`,
+    'testimonials': (a) => `<div style="padding:2.375rem 1rem;background:${a.bgColor};text-align:center;"><h2 style="font-size:2.986rem;font-weight:700;color:#fff;">${a.headline}</h2></div>`,
+    'wins-section': (a) => `<div style="padding:2.375rem 1rem;background:${a.bgColor};text-align:center;"><h2 style="font-size:2.863rem;font-weight:700;color:#fff;">${a.headline}</h2></div>`,
+    'cta-section': (a) => `<div style="padding:2rem 1rem;background:${a.bgColor};text-align:center;"><button style="background:${a.buttonColor};color:#000;font-weight:600;padding:14.08px 18.4px;border-radius:14.4px;border:none;">${a.buttonText}</button></div>`,
+    'wl-footer': (a) => `<footer style="padding:2.25rem 1rem;background:${a.bgColor};text-align:center;"><a href="${a.link}" style="color:#919191;text-decoration:none;font-size:0.875rem;">${a.text}</a></footer>`,
   };
   return renderers[component]?.(attrs) || `<div>Unknown: ${component}</div>`;
 }

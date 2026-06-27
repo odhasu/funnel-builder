@@ -8,6 +8,6 @@ export const thankYouMeta: SectionMeta = {
   settings: [
     { id: 'headline', label: 'Headline', type: 'text', default: 'Thank You!' },
     { id: 'subheadline', label: 'Subheadline', type: 'textarea', default: '' },
-    { id: 'bgColor', label: 'Background Color', type: 'color', default: '#0f172a' },
+    { id: 'bgColor', label: 'Background Color', type: 'color', default: '#000000' },
   ],
 };

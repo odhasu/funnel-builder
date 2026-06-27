@@ -122,6 +122,40 @@ ${fields}
           <p style={{ fontSize: '1.125rem', color: '#94a3b8' }}>{props.subheadline}</p>
         </div>
       </section>`,
+    'testimonials': (p) =>
+`      <section style={{ padding: '2.375rem 1rem', background: '${p.bgColor}', color: '${p.textColor}', textAlign: 'center' as const }}>
+        <h2 style={{ fontSize: '2.986rem', fontWeight: 700, margin: '0 0 3rem' }}>{props.headline}</h2>
+        <div style={{ maxWidth: '75%', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1.25rem' }}>
+          {[1,2,3,4].map(i => (
+            <div key={i} style={{ aspectRatio: '16/9', borderRadius: '0.75rem', overflow: 'hidden', background: '#1a1a1a' }}>
+              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}>Testimonial {i}</div>
+            </div>
+          ))}
+        </div>
+      </section>`,
+    'wins-section': (p) =>
+`      <section style={{ padding: '2.375rem 1rem', background: '${p.bgColor}', color: '${p.textColor}', textAlign: 'center' as const }}>
+        <h2 style={{ fontSize: '2.863rem', fontWeight: 700, margin: '0 0 2.5rem' }}>{props.headline}</h2>
+        <div style={{ maxWidth: '75%', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '0.75rem' }}>
+          {[1,2,3,4,5,6].map(i => (
+            <div key={i} style={{ aspectRatio: '1/1', borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
+              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#444' }}>Win {i}</div>
+            </div>
+          ))}
+        </div>
+      </section>`,
+    'cta-section': (p) =>
+`      <section style={{ padding: '2rem 1rem', background: '${p.bgColor}', textAlign: 'center' as const }}>
+        <button style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: '${p.buttonColor}', color: '#000', fontWeight: 600, fontSize: '0.875rem', borderRadius: '14.4px', padding: '14.08px 18.4px', border: 'none', boxShadow: '0 18px 40px -15px rgba(57,255,20,0.85)', transition: 'all 0.2s', maxWidth: '100%' }}>
+          {props.buttonText}
+        </button>
+      </section>`,
+    'wl-footer': (p) =>
+`      <footer style={{ width: '100%', display: 'flex', justifyContent: 'center', padding: '2.25rem 1rem', background: '${p.bgColor}' }}>
+        <a href={props.link} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '0 10.8px', fontSize: '0.875rem', color: '#919191', textDecoration: 'none' }}>
+          {props.text}
+        </a>
+      </footer>`,
   };
 
   const renderBody = renderMap[sectionMeta.component]?.(defaults) || '';

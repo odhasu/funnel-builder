@@ -7,6 +7,10 @@ import { wlFormMeta } from './wl-form';
 import { contactInfoMeta } from './contact-info';
 import { thankYouMeta } from './thank-you';
 import { footerMeta } from './footer';
+import { testimonialsMeta } from './testimonials';
+import { winsSectionMeta } from './wins-section';
+import { ctaSectionMeta } from './cta-section';
+import { wlFooterMeta } from './wl-footer';
 
 const metaRegistry: Record<string, SectionMeta> = {
   'vsl-hero': vslHeroMeta,
@@ -17,6 +21,10 @@ const metaRegistry: Record<string, SectionMeta> = {
   'contact-info': contactInfoMeta,
   'thank-you': thankYouMeta,
   'footer': footerMeta,
+  'testimonials': testimonialsMeta,
+  'wins-section': winsSectionMeta,
+  'cta-section': ctaSectionMeta,
+  'wl-footer': wlFooterMeta,
 };
 
 export function getSectionMeta(component: string): SectionMeta | undefined {

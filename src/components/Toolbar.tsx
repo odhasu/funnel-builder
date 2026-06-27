@@ -10,7 +10,7 @@ interface Props {
   onPageChange: (id: string) => void;
 }
 
-export function Toolbar({ siteName, onBack, onSave, currentPage, pages, onPageChange }: Props) {
+export function Toolbar({ siteName, onBack, onSave, onExport, currentPage, pages, onPageChange }: Props) {
   return (
     <div className="h-12 bg-white border-b border-gray-200 flex items-center px-4 gap-4 flex-shrink-0">
       <button onClick={onBack} className="text-gray-500 hover:text-gray-700 text-sm">

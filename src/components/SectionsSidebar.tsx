@@ -15,6 +15,10 @@ const sectionIcons: Record<string, string> = {
   'wl-form': '✉️',
   'contact-info': '\u{1F4DE}',
   'thank-you': '✅',
+  'testimonials': '💬',
+  'wins-section': '🏆',
+  'cta-section': '🎯',
+  'wl-footer': '🔗',
 };
 
 export function SectionsSidebar({ sections, selectedSectionId, onSelect }: Props) {

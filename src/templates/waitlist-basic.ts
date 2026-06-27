@@ -12,22 +12,39 @@ export const waitlistBasicTemplate: Template = {
       slug: '/',
       sections: [
         { id: 'sec-hero', component: 'wl-hero', defaultAttributes: {
-          headline: 'Join the Waitlist',
-          subheadline: 'Be the first to know when we launch. Exclusive early access for waitlist members.',
-          bgColor: '#0f172a'
+          headline: 'The Inner Circle Is Currently Closed',
+          subheadline: "We're not accepting new applications right now, but join the waitlist below to be first in line when spots open up.",
+          bgColor: '#000000',
+          textColor: '#ffffff',
+          mutedColor: '#d4d4d4',
+          gradientFrom: '#ffffff',
+          gradientTo: '#919191'
         }},
         { id: 'sec-wl-form', component: 'wl-form', defaultAttributes: {
-          headline: 'Secure Your Spot',
-          emailPlaceholder: 'Enter your best email',
-          buttonText: 'Join Waitlist',
-          incentiveText: 'Early access bonus: 50% off lifetime',
-          bgColor: '#ffffff'
+          headline: 'Join the Waitlist',
+          bgColor: '#000000',
+          accentColor: '#39ff14',
+          cardBorder: 'rgba(57, 255, 20, 0.3)'
         }},
-        { id: 'sec-contact', component: 'contact-info', defaultAttributes: {
-          phone: '',
-          email: 'hello@example.com',
-          address: '',
-          socialLinks: []
+        { id: 'sec-testimonials', component: 'testimonials', defaultAttributes: {
+          headline: "Interviews with the Inner Circle:",
+          bgColor: '#000000',
+          textColor: '#ffffff'
+        }},
+        { id: 'sec-wins', component: 'wins-section', defaultAttributes: {
+          headline: 'More Inner Circle Wins:',
+          bgColor: '#000000',
+          textColor: '#ffffff'
+        }},
+        { id: 'sec-cta', component: 'cta-section', defaultAttributes: {
+          buttonText: 'Get Started Now',
+          buttonColor: '#39ff14',
+          bgColor: '#000000'
+        }},
+        { id: 'sec-footer', component: 'wl-footer', defaultAttributes: {
+          text: 'Built using clyro',
+          link: 'https://clyro.io/',
+          bgColor: '#000000'
         }},
       ]
     },
@@ -39,9 +56,7 @@ export const waitlistBasicTemplate: Template = {
         { id: 'sec-thanks', component: 'thank-you', defaultAttributes: {
           headline: "You're on the list!",
           subheadline: 'Check your email for confirmation. We will notify you when we launch.',
-          redirectUrl: '',
-          redirectDelay: 0,
-          bgColor: '#0f172a'
+          bgColor: '#000000'
         }}
       ]
     }
