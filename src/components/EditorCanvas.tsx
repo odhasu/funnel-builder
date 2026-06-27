@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { Template, FunnelSite } from '../types';
 import { initGrapesJS, loadTemplateIntoCanvas } from '../lib/grapesjs-bridge';
 import type { Editor as GjsEditor } from 'grapesjs';
@@ -10,9 +10,13 @@ interface Props {
   onSelectSection: (id: string) => void;
 }
 
-export function EditorCanvas({ template, site, selectedSectionId, onSelectSection }: Props) {
+export const EditorCanvas = forwardRef<any, Props>(function EditorCanvas({ template, site, selectedSectionId, onSelectSection }, ref) {
   const containerRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<GjsEditor | null>(null);
+
+  useImperativeHandle(ref, () => ({
+    get editor() { return editorRef.current; },
+  }));
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

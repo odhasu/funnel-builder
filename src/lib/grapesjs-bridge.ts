@@ -148,6 +148,35 @@ export function initGrapesJS(container: HTMLElement): GjsEditor {
   return editor;
 }
 
+export function updateSectionAttribute(
+  editor: GjsEditor,
+  sectionId: string,
+  key: string,
+  value: any
+) {
+  const all = editor.DomComponents.getComponents();
+  all.forEach((c: any) => {
+    const el = c.getEl();
+    if (el?.dataset?.sectionId === sectionId) {
+      c.setAttributes({ [key]: value });
+    }
+  });
+}
+
+export function getAllSectionAttributes(
+  editor: GjsEditor
+): Record<string, Record<string, any>> {
+  const result: Record<string, Record<string, any>> = {};
+  const all = editor.DomComponents.getComponents();
+  all.forEach((c: any) => {
+    const el = c.getEl();
+    if (el?.dataset?.sectionId) {
+      result[el.dataset.sectionId] = c.getAttributes();
+    }
+  });
+  return result;
+}
+
 export function loadTemplateIntoCanvas(
   editor: GjsEditor,
   template: Template,

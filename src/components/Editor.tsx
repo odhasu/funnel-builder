@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { getSite, saveSite, updateOverrides } from '../services/storage';
 import { getTemplate } from '../templates';
 import { SectionsSidebar } from './SectionsSidebar';
@@ -6,6 +6,7 @@ import { EditorCanvas } from './EditorCanvas';
 import { SettingsPanel } from './SettingsPanel';
 import { Toolbar } from './Toolbar';
 import { FunnelSite, Template } from '../types';
+import { updateSectionAttribute } from '../lib/grapesjs-bridge';
 
 interface Props {
   siteId: string;
@@ -20,6 +21,7 @@ export function Editor({ siteId, onBack }: Props) {
   );
   const [selectedSectionId, setSelectedSectionId] = useState<string | null>(null);
   const [currentPageId, setCurrentPageId] = useState<string>('home');
+  const editorRef = useRef<any>(null);
 
   if (!template) {
     return <div className="p-8 text-red-500">Template not found</div>;
@@ -38,6 +40,10 @@ export function Editor({ siteId, onBack }: Props) {
     const updated = updateOverrides(site, sectionId, { [key]: value });
     setSite(updated);
     saveSite(updated);
+    // Sync to GrapesJS canvas in real-time
+    if (editorRef.current?.editor) {
+      updateSectionAttribute(editorRef.current.editor, sectionId, key, value);
+    }
   };
 
   const handleSave = () => {
@@ -72,6 +78,7 @@ export function Editor({ siteId, onBack }: Props) {
           }, {} as Record<string, Record<string, any>>)}
         />
         <EditorCanvas
+          ref={editorRef}
           template={template}
           site={site}
           selectedSectionId={selectedSectionId}
