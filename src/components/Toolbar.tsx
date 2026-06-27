@@ -4,6 +4,7 @@ interface Props {
   siteName: string;
   onBack: () => void;
   onSave: () => void;
+  onExport: () => void;
   currentPage: string;
   pages: TemplatePage[];
   onPageChange: (id: string) => void;
@@ -27,6 +28,12 @@ export function Toolbar({ siteName, onBack, onSave, currentPage, pages, onPageCh
           <option key={p.id} value={p.id}>{p.name}</option>
         ))}
       </select>
+      <button
+        onClick={onExport}
+        className="text-sm text-gray-600 hover:text-gray-800 px-3 py-1.5 border border-gray-300 rounded"
+      >
+        Export
+      </button>
       <button
         onClick={onSave}
         className="bg-blue-600 text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-700"

@@ -5,6 +5,7 @@ import { SectionsSidebar } from './SectionsSidebar';
 import { EditorCanvas } from './EditorCanvas';
 import { SettingsPanel } from './SettingsPanel';
 import { Toolbar } from './Toolbar';
+import { ExportDialog } from './ExportDialog';
 import { FunnelSite, Template } from '../types';
 import { updateSectionAttribute } from '../lib/grapesjs-bridge';
 
@@ -21,6 +22,7 @@ export function Editor({ siteId, onBack }: Props) {
   );
   const [selectedSectionId, setSelectedSectionId] = useState<string | null>(null);
   const [currentPageId, setCurrentPageId] = useState<string>('home');
+  const [showExport, setShowExport] = useState(false);
   const editorRef = useRef<any>(null);
 
   if (!template) {
@@ -63,6 +65,7 @@ export function Editor({ siteId, onBack }: Props) {
         siteName={site.name}
         onBack={onBack}
         onSave={handleSave}
+        onExport={() => setShowExport(true)}
         currentPage={currentPageId}
         pages={template.pages}
         onPageChange={setCurrentPageId}
@@ -93,6 +96,14 @@ export function Editor({ siteId, onBack }: Props) {
           />
         )}
       </div>
+      {showExport && (
+        <ExportDialog
+          site={site}
+          template={template}
+          siteName={site.name}
+          onClose={() => setShowExport(false)}
+        />
+      )}
     </div>
   );
 }
